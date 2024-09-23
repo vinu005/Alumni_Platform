@@ -1,0 +1,78 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="MasterPage_Admin.master.vb" Inherits="Alumni_Platform_hackathon.MasterPage_Admin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+ 
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+
+    <link href="~/Alumni/Styles/master.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+           <div class="sidebar">
+            <asp:HyperLink ID="LinkDashboard" runat="server" NavigateUrl="~/Alumni/DashBoard_Alumni.aspx">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </asp:HyperLink>
+            <asp:HyperLink ID="LinkProfile" runat="server" NavigateUrl="~/Alumni/Profile.aspx">
+                <i class="fas fa-user"></i> Profile
+            </asp:HyperLink>
+            <asp:HyperLink ID="LinkEvents" runat="server" NavigateUrl="#">
+                <i class="fas fa-calendar-alt"></i> Alumni Events
+            </asp:HyperLink>
+            <asp:HyperLink ID="LinkNetworking" runat="server" NavigateUrl="#">
+                <i class="fas fa-users"></i> Networking
+            </asp:HyperLink>
+            <asp:HyperLink ID="LinkDonation" runat="server" NavigateUrl="#">
+                <i class="fas fa-donate"></i> Donation
+            </asp:HyperLink>
+            <asp:HyperLink ID="LinkJobPosting" runat="server" NavigateUrl="#">
+                <i class="fas fa-briefcase"></i> Job Posting
+            </asp:HyperLink>
+            <asp:HyperLink ID="LinkSeminar" runat="server" NavigateUrl="#">
+                <i class="fas fa-chalkboard-teacher"></i> Seminar
+            </asp:HyperLink>
+            <asp:HyperLink ID="LinkFeedback" runat="server" NavigateUrl="#">
+                <i class="fas fa-comments"></i> Feedback
+            </asp:HyperLink>
+        </div>
+
+        <div class="navbar">
+            <h2>Alumni Dashboard</h2>
+            <div class="search-container">
+                <asp:TextBox ID="SearchTextBox" runat="server" CssClass="search-box" Placeholder="Search..." />
+                <button type="submit" class="search-button">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+            <span class="toggle-button" onclick="toggleSidebar()"><i class="fas fa-bars"></i></span>
+        </div>
+        <br />
+        <div class="content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+
+        <script>
+        function toggleSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('hidden');
+
+            var navbar = document.querySelector('.navbar');
+            navbar.style.marginLeft = sidebar.classList.contains('hidden') ? '0' : '250px';
+
+            var content = document.querySelector('.content');
+            content.style.marginLeft = sidebar.classList.contains('hidden') ? '0' : '260px';
+        }
+        </script>
+</body>
+</html>
